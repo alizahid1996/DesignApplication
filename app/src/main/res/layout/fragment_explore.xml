@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Fragments.ExploreFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7">
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mountain"
+                android:scaleType="centerCrop"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_explore"
+                    android:layout_marginTop="25dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="Start Exploring"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32dp" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="160dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Top Parks nearby"
+                                android:fontFamily="@font/nunito_sans_bold"
+                                android:textColor="#363636"
+                                android:textSize="20sp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"/>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/ShenandoahNationalPark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginHorizontal="15dp"
+                                app:cardElevation="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/shenandoah_national_park" />
+
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="-20dp"
+                                        android:background="#ECEFE8">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Shenandoah National Park"
+                                                android:textSize="18sp"
+                                                android:textColor="#363636"
+                                                android:fontFamily="@font/nunito_sans_bold"/>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/nunito_sans_semibold"
+                                                android:text="Harrisonburg, VA • 2.4 miles away"
+                                                android:textColor="#363636"
+                                                android:textSize="14sp" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp">
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:gravity="center"
+                                                    android:text="Restroom"
+                                                    android:textColor="#337BF7"
+                                                    android:padding="4dp"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Picnic Area"
+                                                    android:textColor="#337BF7"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="6dp"
+                                                    android:text="Multiuse Trail"
+                                                    android:textColor="#529E65"
+                                                    android:fontFamily="@font/nunito_regular"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="+5 More"
+                                                    android:layout_marginRight="8dp"
+                                                    android:textColor="#363636"
+                                                    android:padding="3dp"/>
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="15dp"
+                                app:cardElevation="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/edith_carrier_arboretum" />
+
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="-20dp"
+                                        android:background="#ECEFE8">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Edith J. Carrier Arboretum"
+                                                android:textSize="18sp"
+                                                android:textColor="#363636"
+                                                android:fontFamily="@font/nunito_sans_bold"/>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/nunito_sans_semibold"
+                                                android:text="Harrisonburg, VA • 3.8 miles away"
+                                                android:textColor="#363636"
+                                                android:textSize="14sp" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp">
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:text="Restroom"
+                                                    android:textColor="#337BF7"
+                                                    android:padding="4dp"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Picnic Area"
+                                                    android:textColor="#337BF7"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="40dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Disc Golf"
+                                                    android:textColor="#CB444A"
+                                                    android:fontFamily="@font/nunito_regular"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="+25 More"
+                                                    android:layout_marginRight="8dp"
+                                                    android:textColor="#363636"
+                                                    android:padding="3dp"/>
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="15dp"
+                                app:cardElevation="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/purcell_park" />
+
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="-20dp"
+                                        android:background="#ECEFE8">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Purcell Park"
+                                                android:textSize="18sp"
+                                                android:textColor="#363636"
+                                                android:fontFamily="@font/nunito_sans_bold"/>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/nunito_sans_semibold"
+                                                android:text="Harrisonburg, VA • 4.3 miles away"
+                                                android:textColor="#363636"
+                                                android:textSize="14sp" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp">
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:text="Restroom"
+                                                    android:textColor="#337BF7"
+                                                    android:padding="4dp"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Picnic Area"
+                                                    android:textColor="#337BF7"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Multiuse Trail"
+                                                    android:textColor="#529E65"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="+5 More"
+                                                    android:layout_marginRight="8dp"
+                                                    android:textColor="#363636"
+                                                    android:padding="3dp"/>
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="15dp"
+                                app:cardElevation="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/hillandale_park" />
+
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="-20dp"
+                                        android:background="#ECEFE8">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Hillandale Park"
+                                                android:textSize="18sp"
+                                                android:textColor="#363636"
+                                                android:fontFamily="@font/nunito_sans_bold"/>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/nunito_sans_semibold"
+                                                android:text="Harrisonburg, VA • 5 miles away"
+                                                android:textColor="#363636"
+                                                android:textSize="14sp" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp">
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:text="Restroom"
+                                                    android:textColor="#337BF7"
+                                                    android:padding="3dp"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Picnic Area"
+                                                    android:textColor="#337BF7"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="40dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="3dp"
+                                                    android:text="Disc Golf"
+                                                    android:textColor="#CB444A"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="+25 More"
+                                                    android:layout_marginRight="8dp"
+                                                    android:textColor="#363636"
+                                                    android:padding="3dp"/>
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                app:cardUseCompatPadding="true"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="15dp"
+                                app:cardElevation="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/kiwanis_state_park" />
+
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="-20dp"
+                                        android:background="#ECEFE8">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Kiwanis State Park"
+                                                android:textSize="18sp"
+                                                android:textColor="#363636"
+                                                android:fontFamily="@font/nunito_sans_bold"/>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/nunito_sans_semibold"
+                                                android:text="Harrisonburg, VA • 5.3 miles away"
+                                                android:textColor="#363636"
+                                                android:textSize="14sp" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp">
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="60dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:text="Restroom"
+                                                    android:textColor="#337BF7"
+                                                    android:padding="4dp"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Picnic Area"
+                                                    android:textColor="#337BF7"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <com.google.android.material.textview.MaterialTextView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="30dp"
+                                                    android:layout_weight="1"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:background="@drawable/btn_gradient2"
+                                                    app:backgroundTint="@null"
+                                                    android:padding="4dp"
+                                                    android:text="Multiuse Trail"
+                                                    android:textColor="#529E65"
+                                                    android:fontFamily="@font/nunito_sans_semibold"
+                                                    android:textAlignment="center"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="+5 More"
+                                                    android:layout_marginRight="8dp"
+                                                    android:textColor="#363636"
+                                                    android:padding="3dp"/>
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none"
+                            android:overScrollMode="never"
+                            android:scrollIndicators="none">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="20dp"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mobilityWheelChair"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    android:paddingBottom="10dp"
+                                    app:cardUseCompatPadding="true"
+                                    app:cardMaxElevation="2dp"
+                                    android:elevation="2dp"
+                                    app:cardBackgroundColor="#EDF2EF"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:src="@drawable/ic_noun_running_shoe_2194995" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Trail Running"
+                                            android:textColor="@color/black"
+                                            android:gravity="bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mobilityWalker"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cardMaxElevation="2dp"
+                                    app:cardUseCompatPadding="true"
+                                    android:layout_marginStart="16dp"
+                                    android:elevation="2dp"
+                                    app:cardBackgroundColor="#FFFAEE"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_noun_picnic_table_357805" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Picnic Area"
+                                            android:textColor="@color/black"
+                                            android:gravity="center|bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mobilityCane"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cardMaxElevation="2dp"
+                                    app:cardUseCompatPadding="true"
+                                    android:layout_marginStart="16dp"
+                                    android:elevation="2dp"
+                                    app:cardBackgroundColor="#F5FCFE"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_noun_water_2073922" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Swimming"
+                                            android:textColor="@color/black"
+                                            android:gravity="center|bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mobilityWalks"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cardMaxElevation="2dp"
+                                    android:layout_marginStart="16dp"
+                                    android:elevation="2dp"
+                                    app:cardUseCompatPadding="true"
+                                    app:cardBackgroundColor="#FFF7F6"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_noun_hiker_1006218" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Hiking"
+                                            android:textColor="@color/black"
+                                            android:gravity="center|bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cardMaxElevation="2dp"
+                                    app:cardUseCompatPadding="true"
+                                    android:layout_marginStart="16dp"
+                                    android:elevation="2dp"
+                                    app:cardBackgroundColor="#EFF5FF"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_noun_fishing_160746" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Fishing"
+                                            android:textColor="@color/black"
+                                            android:gravity="center|bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:cardUseCompatPadding="true"
+                                    android:layout_marginRight="20dp"
+                                    app:cardMaxElevation="2dp"
+                                    android:layout_marginStart="16dp"
+                                    android:elevation="2dp"
+                                    app:cardBackgroundColor="#EDF2EF"
+                                    app:cardCornerRadius="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_trekking" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:text="Bike Trails"
+                                            android:textColor="@color/black"
+                                            android:gravity="center|bottom"
+                                            android:maxLines="1"
+                                            android:fontFamily="@font/roboto_light" />
+                                    </LinearLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/nunito_sans_bold"
+                            android:textColor="#363636"
+                            android:textSize="20sp"
+                            android:text="Find your new favorite spot"
+                            />
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="15dp">
+
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="190dp"
+                                    android:scaleType="centerCrop"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="4dp"
+                                    android:src="@drawable/mask_group7" />
+
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="190dp"
+                                    android:scaleType="centerCrop"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/mask_group" />
+
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="190dp"
+                                    android:scaleType="centerCrop"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/mask_group7" />
+
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+
+                            <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="30">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/bree_serif"
+                                    android:text="See All"
+                                    android:textAlignment="textEnd"
+                                    android:textColor="#3f9dff"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="50dp"/>
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>

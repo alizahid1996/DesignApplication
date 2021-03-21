@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeId"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+    <item android:id="@+id/exploreId"
+        android:icon="@drawable/ic_search_gray_24dp"
+        android:title="Explore"/>
+    <item android:id="@+id/addParkId"
+        android:icon="@drawable/ic_baseline_add_circle_outline_24"
+        android:title="Add Park"/>
+    <item android:id="@+id/profileId"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile"/>
+
+</menu>

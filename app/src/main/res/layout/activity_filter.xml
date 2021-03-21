@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBaar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:theme="@style/AppTheme.Toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ham" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reset"
+                        android:textSize="18sp"
+                        android:textColor="#4CAF50"
+                        android:fontFamily="@font/roboto_regular"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Filter"
+                        android:textColor="#000000"
+                        android:textSize="24sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/appBaar">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show results within"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+
+<com.google.android.material.slider.RangeSlider
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#8BC34A"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50 Miles"
+            android:textSize="18sp"
+            android:textColor="#4CAF50"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="General"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="30dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Restrooms"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Picnic Area"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="WI-FI"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"
+            android:textColor="#8BC34A"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recreation"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSelf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Restroom"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDaughter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Concession Stand"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Picnic Area"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Tennis Court"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Biking"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Boating"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Fitness Zone"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="WI-FI"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"
+            android:textColor="#8BC34A"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sports"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Soccer field (s)"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Baseball field (s)"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Volleyball"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Tennis Court"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Disc Golf"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Horseshoe pit(s)"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="BMX Track"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"
+            android:textColor="#8BC34A"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fitness"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="30dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Biking"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Walking Path"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Fitness Zone"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"
+            android:textColor="#8BC34A"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Family"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Play area for 3-12 Years old"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_gradient2"
+                app:backgroundTint="@null"
+                android:padding="10dp"
+                android:text="Play area for 5-12 Years old"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"
+            android:textColor="#8BC34A"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:background="@drawable/btn_gradient"
+            app:backgroundTint="@null"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="See Parks (34)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="200dp"/>
+
+
+
+    </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
