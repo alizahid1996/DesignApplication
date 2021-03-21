@@ -51,7 +51,7 @@ public class DetailActivity extends AppCompatActivity {
             finish();
         });
 
-        
+
 
         Toast.makeText(this, "" + name, Toast.LENGTH_SHORT).show();
 
