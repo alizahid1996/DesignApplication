@@ -44,7 +44,8 @@ public class DetailActivity extends AppCompatActivity {
     String id;
     String name;
     String Description;
-
+    String decription2;
+    String dt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,10 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-         DataFetching();
+        Toast.makeText(this, "" + name, Toast.LENGTH_SHORT).show();
 
+         DataFetching();
+        //NewDataFetching();
     }
 
 
@@ -77,7 +80,13 @@ public class DetailActivity extends AppCompatActivity {
                             id = response.getString("id");
                             name = response.getString("name");
                             Description = response.getString("description");
-
+                            decription2 = response.getString("directions");
+                            JSONArray arr = response.getJSONArray("weatherForecast");
+                            for (int i=0; i<arr.length(); i++)
+                            {
+                                JSONObject jobj = arr.getJSONObject(i);
+                                
+                            }
                             Handler delayToshowProgress = new Handler();
                             delayToshowProgress.postDelayed(new Runnable() {
                                 @Override
@@ -85,10 +94,20 @@ public class DetailActivity extends AppCompatActivity {
 
                                     binding.tv2.setText(name);
                                     binding.Description.setText(Description);
+                                    binding.descriptionDetail.setText(decription2);
+                                   /* binding.affected.setText(NumberFormat.getInstance().format(Integer.parseInt(str_confirmed)));
+                                    int_active_new = Integer.parseInt(str_confirmed) - (Integer.parseInt(str_recovered) + Integer.parseInt(str_death));
+                                    binding.active.setText("+" + NumberFormat.getInstance().format(int_active_new));
 
+                                    binding.recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
 
+                                    binding.death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
+
+                                    binding.trackingPiechart.invalidate();
+                                    setData(Float.parseFloat(str_confirmed),Float.parseFloat(str_recovered),Float.parseFloat(str_death));
+*/
                                 }
-                            }, 1000);
+                            }, 1);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
