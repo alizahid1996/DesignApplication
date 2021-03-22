@@ -2,9 +2,14 @@ package com.ui.designapplication;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +24,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ui.designapplication.DataClasses.MyData;
@@ -37,7 +50,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     ActivityDetailBinding binding;
     private RequestQueue mQueue;
@@ -45,7 +58,18 @@ public class DetailActivity extends AppCompatActivity {
     String name;
     String Description;
     String decription2;
-    String dt;
+    String lat , lng;
+    private ProgressDialog progressDialog;
+    private double latitude = 37.349642;
+    private double longtitude = -121.938987;
+
+    /*String[] afterSplitLat = lat.split(" ");
+    String[] afterSplitLng = lng.split(" ");
+
+    double latitude = Double.parseDouble(afterSplitLat[0]);
+
+    double longitude = Double.parseDouble(afterSplitLng[1]);*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +77,29 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+
+
         binding.backButton.setOnClickListener(v -> {
             finish();
         });
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
 
-        Toast.makeText(this, "" + name, Toast.LENGTH_SHORT).show();
+        ShowDialog(DetailActivity.this);
+        DataFetching();
+    }
 
-         DataFetching();
-        //NewDataFetching();
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng sydney = new LatLng(latitude,longtitude);
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(lat), Double.parseDouble(lng))));
+        googleMap.addMarker(new MarkerOptions()
+                .position(sydney)
+                .title("My Marker"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 
@@ -81,11 +119,15 @@ public class DetailActivity extends AppCompatActivity {
                             name = response.getString("name");
                             Description = response.getString("description");
                             decription2 = response.getString("directions");
+                            lng = response.getString("long");
+                            lat = response.getString("lat");
+                            Log.d("name","lat"+lat);
+
+DismissDialog();
                             JSONArray arr = response.getJSONArray("weatherForecast");
                             for (int i=0; i<arr.length(); i++)
                             {
                                 JSONObject jobj = arr.getJSONObject(i);
-                                
                             }
                             Handler delayToshowProgress = new Handler();
                             delayToshowProgress.postDelayed(new Runnable() {
@@ -95,17 +137,7 @@ public class DetailActivity extends AppCompatActivity {
                                     binding.tv2.setText(name);
                                     binding.Description.setText(Description);
                                     binding.descriptionDetail.setText(decription2);
-                                   /* binding.affected.setText(NumberFormat.getInstance().format(Integer.parseInt(str_confirmed)));
-                                    int_active_new = Integer.parseInt(str_confirmed) - (Integer.parseInt(str_recovered) + Integer.parseInt(str_death));
-                                    binding.active.setText("+" + NumberFormat.getInstance().format(int_active_new));
-
-                                    binding.recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
-
-                                    binding.death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-
-                                    binding.trackingPiechart.invalidate();
-                                    setData(Float.parseFloat(str_confirmed),Float.parseFloat(str_recovered),Float.parseFloat(str_death));
-*/
+                              DismissDialog();
                                 }
                             }, 1);
 
@@ -121,6 +153,18 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         requestQueue.add(jsonObjectRequest);
+    }
+
+    public void ShowDialog(Context context) {
+        //setting up progress dialog
+        progressDialog = new ProgressDialog(context);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+    public void DismissDialog() {
+        progressDialog.dismiss();
     }
 
 }
