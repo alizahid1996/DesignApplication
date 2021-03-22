@@ -57,10 +57,8 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-        Toast.makeText(this, "" + name, Toast.LENGTH_SHORT).show();
-
          DataFetching();
-        //NewDataFetching();
+
     }
 
 
@@ -79,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
                             id = response.getString("id");
                             name = response.getString("name");
                             Description = response.getString("description");
-                            //str_death = response.getString("deceased");
+
                             Handler delayToshowProgress = new Handler();
                             delayToshowProgress.postDelayed(new Runnable() {
                                 @Override
@@ -87,17 +85,7 @@ public class DetailActivity extends AppCompatActivity {
 
                                     binding.tv2.setText(name);
                                     binding.Description.setText(Description);
-                                   /* binding.affected.setText(NumberFormat.getInstance().format(Integer.parseInt(str_confirmed)));
-                                    int_active_new = Integer.parseInt(str_confirmed) - (Integer.parseInt(str_recovered) + Integer.parseInt(str_death));
-                                    binding.active.setText("+" + NumberFormat.getInstance().format(int_active_new));
 
-                                    binding.recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
-
-                                    binding.death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-
-                                    binding.trackingPiechart.invalidate();
-                                    setData(Float.parseFloat(str_confirmed),Float.parseFloat(str_recovered),Float.parseFloat(str_death));
-*/
 
                                 }
                             }, 1000);
