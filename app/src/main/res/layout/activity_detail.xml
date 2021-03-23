@@ -860,16 +860,6 @@
 
     </LinearLayout>
 
-    <HorizontalScrollView
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/hsv"
-        app:layout_constraintTop_toBottomOf="@+id/linear9"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:fillViewport="true"
-        android:measureAllChildren="false"
-        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_marginTop="20dp"
@@ -930,9 +920,9 @@
             </LinearLayout>
 
 
+
         </LinearLayout>
 
-    </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
