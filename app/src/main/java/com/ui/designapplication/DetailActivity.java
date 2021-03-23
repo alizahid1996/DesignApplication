@@ -112,7 +112,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         arrayList = new ArrayList<>();
         m = new MyAdapter();
         Log.d("oncreate", "set adapter");
@@ -122,7 +121,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         binding.recyclerView.setLayoutParams(params);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
-
 
         //Back Button
         binding.backButton.setOnClickListener(v -> {
@@ -183,11 +181,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
 
-
     }
-
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -313,6 +307,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
             BitmapFactory.Options options = new BitmapFactory.Options();
             // downsizing image as it throws OutOfMemory Exception for larger
             // images
+
             options.inSampleSize = 20;
             final Bitmap bitmap = BitmapFactory.decodeFile(m.getImage(), options);
             holder.imageView.setImageBitmap(bitmap);
@@ -391,6 +386,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         Data_Model data_model = new Data_Model();
         data_model.setImage(path);
         arrayList.add(data_model);
+        binding.recyclerView.setAdapter(m);
         m.notifyDataSetChanged();
         // Toast.makeText(this, "" + path, Toast.LENGTH_LONG).show();
     }
