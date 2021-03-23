@@ -129,7 +129,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
-
     private void DataFetching() {
         String url = "https://godiapi.azurewebsites.net/api/cards/getParkById/600764a194361a4b14bf2a35";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
