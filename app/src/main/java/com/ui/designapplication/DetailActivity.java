@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,6 +46,7 @@ import com.google.gson.GsonBuilder;
 import com.ui.designapplication.DataClasses.MyData;
 import com.ui.designapplication.Models.myModel;
 import com.ui.designapplication.databinding.ActivityDetailBinding;
+import com.ui.designapplication.ui.RecyclerViewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +65,7 @@ import java.util.Map;
 
 public class DetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final String TAG = "DetailActivity";
     ActivityDetailBinding binding;
     private RequestQueue mQueue;
     String id;
@@ -70,12 +74,13 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
     String decription2;
     String lat, lng;
     private ProgressDialog progressDialog;
-    private double latitude = 37.349642;
-    private double longtitude = -121.938987;
+    private double latitude = 38.282771;
+    private double longtitude = -77.647043;
     Uri uri;
     Bitmap bitmap;
     public myAdpater adpater;
     private ArrayList<imageModel> list;
+    private ArrayList<String> mImageUrls = new ArrayList<>();
 
 
     /*String[] afterSplitLat = lat.split(" ");
@@ -115,6 +120,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
         ShowDialog(DetailActivity.this);
         DataFetching();
+
     }
 
 
@@ -214,10 +220,10 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                     String imageEncoded = cursor.getString(columnIndex);
                     cursor.close();
 
-                    /*Bitmap mBitmap;
+                    Bitmap mBitmap;
                     BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
                     mBitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bitmapOptions);
-                    file = savebitmap(mBitmap);*/
+                    file = savebitmap(mBitmap);
 
                     ArrayList<Uri> mArrayUri = new ArrayList<>();
                     mArrayUri.add(mImageUri);
@@ -244,10 +250,10 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                             cursor.close();
 
 
-                            /*Bitmap mMultipleBitmap;
+                            Bitmap mMultipleBitmap;
                             BitmapFactory.Options bo = new BitmapFactory.Options();
                             mMultipleBitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bo);
-                            file = savebitmap(mMultipleBitmap);*/
+                            file = savebitmap(mMultipleBitmap);
 
                             adpater = new myAdpater(DetailActivity.this, list);
                             binding.recyclerView.setAdapter(adpater);
@@ -265,7 +271,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-/*    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
