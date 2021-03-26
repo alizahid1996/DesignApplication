@@ -1,144 +1,82 @@
 package com.ui.designapplication;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.ui.designapplication.DataClasses.MyData;
-import com.ui.designapplication.Models.myModel;
-import com.ui.designapplication.databinding.ActivityDetailBinding;
-import com.ui.designapplication.ui.RecyclerViewAdapter;
+import com.ui.designapplication.databinding.ActivityDetail2Binding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
-public class DetailActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class DetailActivity2 extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final String TAG = "DetailActivity";
-    ActivityDetailBinding binding;
-    private RequestQueue mQueue;
+    ActivityDetail2Binding binding;
+
     Uri imageData;
-
+    String id;
+    String name;
+    String Description;
+    String address;
+    String city;
+    String streetAddress;
+    String state;
+    String zipcode;
     public static final int CAMERA_PERMISSION_CODE = 1;
     public static final int CAMERA_IMAGE_CODE = 10;
     public static final int GALLERY_IMAGE_CODE = 100;
-
+    String decription2;
+    String lat, lng;
     public static final int DRIVER_CAMERA_IMAGE_CODE = 2;
     private ProgressDialog progressDialog;
-    private double latitude = 38.282771;
-    private double longtitude = -77.647043;
+    private double latitude = 37.56893;
+    private double longtitude = -77.44127;
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    String imageEncoded;
+    String chkpath = null;
+    private String mCurrentPhotoPath;
     ArrayList<Data_Model> arrayList;
+    int i = 0;
+    static final int REQUEST_TAKE_PHOTO = 1;
     private int SELECT_FILE = 2;
+    private String userChoosenTask;
+    private Uri fileUri; // file url to store image/vide
 
-    String id="";
-    String name="";
-
-    String Description="";
-    String decription2="";
-    String address="";
-    String city="";
-    String streetAddress="";
-    String state="";
-    String zipcode="";
-
-    String lattitude="";
-    String longitude="";
-    String imageUrl="";
-    String reviews="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDetailBinding.inflate(getLayoutInflater());
+        binding = ActivityDetail2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            id = bundle.getString("id");
-            name = bundle.getString("name");
-            Description = bundle.getString("Description");
-            decription2 = bundle.getString("decription2");
-            city = bundle.getString("city");
-            streetAddress = bundle.getString("streetAddress");
-            state = bundle.getString("state");
-            zipcode = bundle.getString("zipcode");
-            lattitude= bundle.getString("latitude");
-            longitude = bundle.getString("longitude");
-            imageUrl = bundle.getString("imageUrl");
-            reviews = bundle.getString("reviews");
-
-        }
-
-      address = streetAddress+""+city+""+state+""+zipcode;
-         binding.tv2.setText(name);
-        binding.tv3.setText(address);
-        binding.Description.setText(Description);
-        binding.descriptionDetail.setText(decription2);
-        Glide.with(this).load(imageUrl).into(binding.image1);
 
         //Back Button
         binding.backButton.setOnClickListener(v -> {
@@ -152,20 +90,15 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
             }
         });
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
+        DataFetching();
 
-        ShowDialog(DetailActivity.this);
+        ShowDialog(DetailActivity2.this);
+
 
     }
-
-
-
-
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -177,8 +110,62 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
+    private void DataFetching() {
+        String url = "https://godiapi.azurewebsites.net/api/cards/getParkById/600f2a8ad36805fcc9248a63";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //Fetching data from API and storing into string
+                        try {
+                            id = response.getString("id");
+                            name = response.getString("name");
+                            Description = response.getString("description");
+                            decription2 = response.getString("directions");
+                            streetAddress = response.getString("streetAddress");
+                            city = response.getString("city");
+                            state = response.getString("state");
+                            zipcode = response.getString("zipCode");
+                            lng = response.getString("long");
+                            lat = response.getString("lat");
+                            Log.d("name", "lat" + lat);
 
+                            DismissDialog();
+                            JSONArray arr = response.getJSONArray("weatherForecast");
+                            for (int i = 0; i < arr.length(); i++) {
+                                JSONObject jobj = arr.getJSONObject(i);
+                            }
+                            Handler delayToshowProgress = new Handler();
+                            delayToshowProgress.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
 
+                                    binding.tv2.setText(name);
+                                    binding.Description.setText(Description);
+                                    binding.descriptionDetail.setText(decription2);
+                                    address = streetAddress +","+city+","+state+","+zipcode;
+                                    binding.tv3.setText(address);
+                                    DismissDialog();
+                                }
+                            }, 1);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailActivity2.this, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+    }
 
     public void ShowDialog(Context context) {
         //setting up progress dialog
@@ -193,33 +180,12 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         progressDialog.dismiss();
     }
 
-
-
-
-
-
-
-
-
-
-    public void galleryIntent() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        Log.d("gallery", "checkpointA");
-        startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
-        Log.d("gallery", "checkpointB");
-    }
-
-
     private void choseImage() {
         Intent imageIntent = new Intent();
         imageIntent.setType("image/*");
         imageIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(imageIntent, "Select Picture"), GALLERY_IMAGE_CODE);
-
     }
-
     //On Activity Result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
@@ -245,16 +211,14 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(DetailActivity.this, "Camera permission granted", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailActivity2.this, "Camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_IMAGE_CODE);
             } else {
-                Toast.makeText(DetailActivity.this, "Camera permission denied", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailActivity2.this, "Camera permission denied", Toast.LENGTH_LONG).show();
             }
         }
     }
-
-
 
     public byte[] getImageBytes(Bitmap inImage) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -262,8 +226,4 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         byte[] imageBytes = outputStream.toByteArray();
         return imageBytes;
     }
-
-
 }
-
-

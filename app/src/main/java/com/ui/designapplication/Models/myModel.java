@@ -40,7 +40,7 @@ public class myModel {
     public myModel() {
     }
 
-    public myModel(String id, String name, String description, String streetAddress, String streetAddress2, String state, String city, String zipCode, String directions, String type, String phoneNumber, String hoursOfOperation, String website, String email, String longitude, String latitude, String stayLimit, String acres, String tags, String tagCount, String contentImage, String file, String fileString, String lastUpdated, String origin, String approved, String status, String likeCount, String imageUrl, String weatherForecast, String reviews, String photos, List<myModel.tags> tagsList, List<myModel.weatherForecast> weatherForecastList) {
+    public myModel(String id, String name, String description, String streetAddress, String streetAddress2, String state, String city, String zipCode, String directions, String type, String phoneNumber, String hoursOfOperation, String website, String email, String longitude, String latitude, String stayLimit, String acres, String tags, String tagCount, String contentImage, String file, String fileString, String lastUpdated, String origin, String approved, String status, String likeCount, String imageUrl, String weatherForecast, String reviews, String photos) {
         this.id = id;
         this.name = name;
         this.description = description;
