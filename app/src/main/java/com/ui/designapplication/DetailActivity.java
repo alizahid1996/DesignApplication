@@ -41,6 +41,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -76,22 +77,17 @@ import java.util.Map;
 
 public class DetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final String TAG = "DetailActivity";
     ActivityDetailBinding binding;
-    private RequestQueue mQueue;
     Uri imageData;
 
     public static final int CAMERA_PERMISSION_CODE = 1;
     public static final int CAMERA_IMAGE_CODE = 10;
     public static final int GALLERY_IMAGE_CODE = 100;
 
-    public static final int DRIVER_CAMERA_IMAGE_CODE = 2;
     private ProgressDialog progressDialog;
     private double latitude = 38.282771;
     private double longtitude = -77.647043;
-    private ArrayList<String> mImageUrls = new ArrayList<>();
-    ArrayList<Data_Model> arrayList;
-    private int SELECT_FILE = 2;
+
 
     String id="";
     String name="";
@@ -108,6 +104,8 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
     String longitude="";
     String imageUrl="";
     String reviews="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +133,8 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
       address = streetAddress+""+city+""+state+""+zipcode;
          binding.tv2.setText(name);
         binding.tv3.setText(address);
+        Glide.with(this).load(imageUrl).into(binding.image1);
+
 
 
         //Back Button
@@ -154,14 +154,8 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
-        ShowDialog(DetailActivity.this);
 
     }
-
-
-
-
-
 
 
     @Override
