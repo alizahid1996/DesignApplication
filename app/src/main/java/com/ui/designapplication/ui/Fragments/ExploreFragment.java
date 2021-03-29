@@ -46,10 +46,10 @@ public class ExploreFragment extends Fragment {
     String zipcode;
     ProgressDialog progressDialog;
     String type, phoneNumber, hoursOfOperation, website, email, longitude, latitude, stayLimit;
-    String acres, tags,tagCount, contentImage, file, fileString, lastUpdated, origin, approved;
-    String status, likeCount, imageUrl,reviews, photos,weatherForecast;
+    String acres, tags, tagCount, contentImage, file, fileString, lastUpdated, origin, approved;
+    String status, likeCount, imageUrl, reviews, photos, weatherForecast;
     double lat = 37.431572;
-    double lng= -78.656891;
+    double lng = -78.656891;
     String p;
 
     private ParksAdapter adapter;
@@ -57,11 +57,12 @@ public class ExploreFragment extends Fragment {
     private ArrayList<myModel> models;
 
     FragmentExploreBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       binding = FragmentExploreBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentExploreBinding.inflate(getLayoutInflater(), container, false);
        /*binding.ShenandoahNationalPark.setOnClickListener(v -> {
            Intent intent = new Intent(getActivity(), DetailActivity.class);
            startActivity(intent);
@@ -80,12 +81,12 @@ public class ExploreFragment extends Fragment {
             startActivity(intent);
         });*/
         models = new ArrayList<>();
-       DataFetching();
-       //DataFeching();
-       //DataFeching2();
-       //DataFeching3();
+        DataFetching();
+        //DataFeching();
+        //DataFeching2();
+        //DataFeching3();
         ShowDialog(getActivity());
-       return binding.getRoot();
+        return binding.getRoot();
     }
 
     @Override
@@ -112,47 +113,47 @@ public class ExploreFragment extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject o = jsonArray.getJSONObject(i);
 
-                            DismissDialog();
-                            id = o.getString("id");
-                            name = o.getString(("name"));
-                           Description = o.getString("description");
-                            streetAddress = o.getString("streetAddress");
-                            streetAddress2 = o.getString("streetAddress2");
-                             state = o.getString("state");
-                               city = o.getString("city");
-                               zipcode = o.getString("zipCode");
-                                decription2 = o.getString("directions");
-                                type = o.getString("type");
-                                phoneNumber = o.getString(("phoneNumber"));
-                                hoursOfOperation = o.getString("hoursOfOperation");
-                                website = o.getString("website");
-                                email = o.getString("email");
-                                latitude = o.getString("lat");
-                                longitude = o.getString("long");
-                                 stayLimit = o.getString("stayLimit");
-                                acres = o.getString("acres");
-                                tags = o.getString("tags");
-                                tagCount = o.getString("tagCount");
-                                contentImage = o.getString("contentImage");
-                                file = o.getString("file");
-                                fileString = o.getString("fileString");
-                                lastUpdated = o.getString("lastUpdated");
-                                origin = o.getString("origin");
-                                approved = o.getString("approved");
-                                status = o.getString("status");
-                                likeCount = o.getString("likeCount");
-                                 imageUrl = o.getString("imageUrl");
-                                    reviews = o.getString("reviews");
-                                    photos = o.getString("photos");
-                                    weatherForecast = o.getString("weatherForecast");
+                        DismissDialog();
+                        id = o.getString("id");
+                        name = o.getString(("name"));
+                        Description = o.getString("description");
+                        streetAddress = o.getString("streetAddress");
+                        streetAddress2 = o.getString("streetAddress2");
+                        state = o.getString("state");
+                        city = o.getString("city");
+                        zipcode = o.getString("zipCode");
+                        decription2 = o.getString("directions");
+                        type = o.getString("type");
+                        phoneNumber = o.getString(("phoneNumber"));
+                        hoursOfOperation = o.getString("hoursOfOperation");
+                        website = o.getString("website");
+                        email = o.getString("email");
+                        latitude = o.getString("lat");
+                        longitude = o.getString("long");
+                        stayLimit = o.getString("stayLimit");
+                        acres = o.getString("acres");
+                        tags = o.getString("tags");
+                        tagCount = o.getString("tagCount");
+                        contentImage = o.getString("contentImage");
+                        file = o.getString("file");
+                        fileString = o.getString("fileString");
+                        lastUpdated = o.getString("lastUpdated");
+                        origin = o.getString("origin");
+                        approved = o.getString("approved");
+                        status = o.getString("status");
+                        likeCount = o.getString("likeCount");
+                        imageUrl = o.getString("imageUrl");
+                        reviews = o.getString("reviews");
+                        photos = o.getString("photos");
+                        weatherForecast = o.getString("weatherForecast");
 
 
-                                models.add(new myModel(id, name,Description,streetAddress,streetAddress2,state,city,zipcode,decription2,type,phoneNumber,hoursOfOperation,website,email,latitude,longitude,stayLimit,acres,tags,tagCount,contentImage,file,fileString,lastUpdated,origin,approved,status,likeCount,imageUrl,weatherForecast,reviews,photos));
-                            }
+                        models.add(new myModel(id, name, Description, streetAddress, streetAddress2, state, city, zipcode, decription2, type, phoneNumber, hoursOfOperation, website, email, latitude, longitude, stayLimit, acres, tags, tagCount, contentImage, file, fileString, lastUpdated, origin, approved, status, likeCount, imageUrl, weatherForecast, reviews, photos));
+                    }
 
                     DismissDialog();
 
-                    adapter = new ParksAdapter(models, requireActivity());
+                    adapter = new ParksAdapter(models, getActivity());
                     binding.recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -170,20 +171,17 @@ public class ExploreFragment extends Fragment {
                         DismissDialog();
                     }
 
-
-                })
-
-        {
+                }) {
 
             @Override
             protected Map<String, String> getParams() {
-            // Posting parameters to login url
-            Map<String, String> params = new HashMap<>();
-            params.put("lat",Double.toString(37.431572));
-            params.put("long", Double.toString(-78.656891));
-            params.put("radius", Integer.toString(40));
-            return params;
-        }
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("lat", ("37.431572"));
+                params.put("long", ("-78.656891"));
+                params.put("radius", ("40"));
+                return params;
+            }
 
         };
 

@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -35,7 +35,7 @@ public class DemoActivity extends AppCompatActivity {
     public static final int CAMERA_PERMISSION_CODE = 1;
     public static final int CAMERA_IMAGE_CODE = 10;
     public static final int GALLERY_IMAGE_CODE = 100;
-    FirebaseAuth auth;
+//    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class DemoActivity extends AppCompatActivity {
         binding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
 
         //Pick Image from Gallery
         binding.pickPhoto.setOnClickListener(new View.OnClickListener() {

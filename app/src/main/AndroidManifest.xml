@@ -16,11 +16,16 @@
         <activity android:name=".DetailActivity1"
             android:theme="@style/Theme.DesignApplication.NoActionbar"/>
         <activity android:name=".ImageDisplay" />
-        <activity android:name=".DeatilsActivity"
-            android:theme="@style/Theme.DesignApplication.NoActionbar"/>
+
         <activity
             android:name=".DetailActivity"
             android:theme="@style/Theme.DesignApplication.NoActionbar" />
+
+        <activity
+            android:name=".DemoActivity"
+            android:theme="@style/Theme.DesignApplication.NoActionbar" >
+
+        </activity>
         <activity
             android:name=".FilterActivity"
             android:theme="@style/Theme.DesignApplication.NoActionbar" />
@@ -32,6 +37,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity" />
 
