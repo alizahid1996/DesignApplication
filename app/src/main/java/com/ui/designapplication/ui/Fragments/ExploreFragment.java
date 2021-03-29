@@ -92,7 +92,6 @@ public class ExploreFragment extends Fragment {
         apiInterface = ApiClient.getClient()
                 .create(ApiInterface.class);
 
-
         //Add Permission
         ActivityCompat.requestPermissions(getActivity(), new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_Location);
@@ -110,17 +109,11 @@ public class ExploreFragment extends Fragment {
                 }
                 else
                 {
-                    //Gps is laready ON
+                    //Gps is already ON
                     getCurrentLocation();
                 }
             }
         });
-
-        /*Log.d("lat", currLat);
-        Log.d("long", currLong);*/
-
-
-
 
         getServerResponse();
 
