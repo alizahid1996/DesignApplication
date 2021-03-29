@@ -105,17 +105,17 @@ public class ExploreFragment extends Fragment {
 
     private void getServerResponse() {
 
-       /* String request = "{\n" +
-                "\"lat\":\"37.412687780\",\n" +
-                "\"long\" : \"-77.64786873015784\",\n" +
-                "\"radius\":\"20\"\n" +
-                "}";*/
-
         String request = "{\n" +
                 "\"lat\":\"37.412687780\",\n" +
                 "\"long\" : \"-77.64786873015784\",\n" +
                 "\"radius\":\"20\"\n" +
                 "}";
+
+        /*String request = "{\n" +
+                "\"lat\":\"37.412687780\",\n" +
+                "\"long\" : \"-77.64786873015784\",\n" +
+                "\"radius\":\"20\"\n" +
+                "}";*/
 
         try {
 
