@@ -68,10 +68,6 @@ public class ExploreFragment extends Fragment {
     LocationManager locationManager;
     private ApiInterface apiInterface;
     private static final int REQUEST_Location = 1;
-    private GoogleApiClient mGoogleApiClient;
-    private LocationRequest mLocationRequest;
-    private double currentLatitude;
-    private double currentLongitude;
 
     private ParksAdapter adapter;
 
