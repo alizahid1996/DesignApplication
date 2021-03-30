@@ -17,9 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.provider.Settings;
 import android.util.Log;
@@ -28,27 +31,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.internal.ConnectionCallbacks;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.gson.JsonParser;
 import com.ui.designapplication.Adapter.ParksAdapter;
 import com.ui.designapplication.Models.NearbyCards;
+import com.ui.designapplication.Models.RequestModel;
 import com.ui.designapplication.Models.ServerResponse;
-import com.ui.designapplication.MyLocationListener;
+import com.ui.designapplication.Models.myModel;
 import com.ui.designapplication.R;
 import com.ui.designapplication.databinding.FragmentExploreBinding;
 import com.ui.designapplication.network.ApiClient;
 import com.ui.designapplication.network.ApiInterface;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -76,6 +89,8 @@ public class ExploreFragment extends Fragment {
     private List<NearbyCards> models;
     FragmentExploreBinding binding;
 
+    private List<myModel> model;
+
     private static final int REQUEST_LOCATION = 1;
     LocationManager locManager;
 
@@ -89,6 +104,7 @@ public class ExploreFragment extends Fragment {
         binding = FragmentExploreBinding.inflate(getLayoutInflater(), container, false);
 
         models = new ArrayList<>();
+        model = new ArrayList<>();
 
         apiInterface = ApiClient.getClient()
                 .create(ApiInterface.class);
@@ -98,25 +114,25 @@ public class ExploreFragment extends Fragment {
                 Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_Location);
 
         //Get Location
-        binding.getLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-                // Check if Gps is ON or not
-                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-                {
-                    turnOnGps();
-                }
-                else
-                {
-                    //Gps is already ON
-                    getCurrentLocation();
-                }
-            }
-        });
+        // Check if Gps is ON or not
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+        {
+            turnOnGps();
+        }
+        else
+        {
+            //Gps is already ON
+            getCurrentLocation();
+        }
 
-        getServerResponse();
+
+
+
+            getServerResponse();
+
+       // DataFetching();
 
         ShowDialog(getActivity());
         return binding.getRoot();
@@ -143,8 +159,6 @@ public class ExploreFragment extends Fragment {
                 currentLongitude = locGps.getLongitude();
                 currLat = String.valueOf(currentLatitude);
                 currLong = String.valueOf(currentLongitude);
-                binding.lat.setText(currLat);
-                binding.longi.setText(currLong);
 
             } else if (locNet != null)
             {
@@ -152,8 +166,7 @@ public class ExploreFragment extends Fragment {
                 currentLongitude = locNet.getLongitude();
                 currLat = String.valueOf(currentLatitude);
                 currLong = String.valueOf(currentLongitude);
-                binding.lat.setText(currLat);
-                binding.longi.setText(currLong);
+
             }
             else if (locPassive != null)
             {
@@ -161,9 +174,6 @@ public class ExploreFragment extends Fragment {
                 currentLongitude = locPassive.getLongitude();
                 currLat = String.valueOf(currentLatitude);
                 currLong = String.valueOf(currentLongitude);
-
-                binding.lat.setText(currLat);
-                binding.longi.setText(currLong);
             }
             else
             {
@@ -195,68 +205,62 @@ public class ExploreFragment extends Fragment {
 
     private void getServerResponse() {
 
-        String request = "{\n" +
-                "\"lat\":\"37.412687780\",\n" +
-                "\"long\" : \"-77.64786873015784\",\n" +
-                "\"radius\":\"20\"\n" +
-                "}";
-
         /*String request = "{\n" +
                 "\"lat\":\"37.412687780\",\n" +
                 "\"long\" : \"-77.64786873015784\",\n" +
                 "\"radius\":\"20\"\n" +
                 "}";*/
+        RequestModel requestModel = new RequestModel(
+                "20", currLat, currLong);
 
-        try {
+        /*JSONObject jsonObject = new JSONObject();
+            jsonObject.put("lat","37.412687780");
+            jsonObject.put("long","-77.64786873015784");
+            jsonObject.put("radius","20");*/
 
-            JSONObject jsonObject = new JSONObject(request);
 
-            Call<ServerResponse> call = apiInterface.getResponse(jsonObject);
+        Call<ServerResponse> call = apiInterface.getResponse(requestModel);
 
-            call.enqueue(new Callback<ServerResponse>() {
-                @Override
-                public void onResponse(@NonNull Call<ServerResponse> call,
-                                       @NonNull Response<ServerResponse> response) {
+       call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ServerResponse> call,
+                                   @NonNull Response<ServerResponse> response) {
 
-                    if (response.isSuccessful() &&
-                            response.code() == 200 &&
-                            response.body() != null) {
+                if (response.isSuccessful() &&
+                        response.code() == 200 &&
+                        response.body() != null) {
 
-                        ServerResponse serverResponse = response.body();
+                    ServerResponse serverResponse = response.body();
+
+                    if (serverResponse.getNearbyCards().size() > 0) {
+
                         models.addAll(serverResponse.getNearbyCards());
 
-                        // Do any thing with Response
-
-                        /*Toast.makeText(getActivity(),
-
-                                serverResponse.toString(), Toast.LENGTH_LONG).show();
-
-                        Toast.makeText(getActivity(), serverResponse
-                                .getNearbyCards().toString(), Toast.LENGTH_LONG).show();*/
 
                     }
-                    DismissDialog();
-                    adapter = new ParksAdapter(models, requireActivity());
-                    binding.recyclerView.setAdapter(adapter);
                 }
-
-                @Override
-                public void onFailure(@NonNull Call<ServerResponse> call, @NonNull Throwable t) {
-
-                    Log.d(TAG, "Request Failure -> " + t.getMessage());
-
-                    Toast.makeText(getActivity(),
-                            t.getMessage(), Toast.LENGTH_SHORT).show();
-
+                else {
+                    if(response.body().toString().length()==0){
+                        Toast.makeText(getActivity(), "Empty", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            });
+                DismissDialog();
+                adapter = new ParksAdapter(models, requireActivity());
+                binding.recyclerView.setAdapter(adapter);
+            }
 
-        } catch (JSONException exception) {
-            DismissDialog();
-            exception.printStackTrace();
+            @Override
+            public void onFailure(@NonNull Call<ServerResponse> call, @NonNull Throwable t) {
 
-        }
-    }
+                Log.d(TAG, "Request Failure -> " + t.getMessage());
+
+                Toast.makeText(getActivity(),
+                        t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+       }
 
     @Override
     public void onStart() {
@@ -301,32 +305,32 @@ public class ExploreFragment extends Fragment {
                                 city = o.getString("city");
                                 zipcode = o.getString("zipCode");
                                 decription2 = o.getString("directions");
-                                type = o.getString("type");
-                                phoneNumber = o.getString(("phoneNumber"));
-                                hoursOfOperation = o.getString("hoursOfOperation");
-                                website = o.getString("website");
-                                email = o.getString("email");
-                                latitude = o.getString("lat");
-                                longitude = o.getString("long");
-                                stayLimit = o.getString("stayLimit");
-                                acres = o.getString("acres");
-                                tags = o.getString("tags");
-                                tagCount = o.getString("tagCount");
-                                contentImage = o.getString("contentImage");
-                                file = o.getString("file");
-                                fileString = o.getString("fileString");
-                                lastUpdated = o.getString("lastUpdated");
-                                origin = o.getString("origin");
-                                approved = o.getString("approved");
-                                status = o.getString("status");
-                                likeCount = o.getString("likeCount");
-                                imageUrl = o.getString("imageUrl");
-                                reviews = o.getString("reviews");
-                                photos = o.getString("photos");
-                                weatherForecast = o.getString("weatherForecast");
+                                String type = o.getString("type");
+                                String phoneNumber = o.getString(("phoneNumber"));
+                                String hoursOfOperation = o.getString("hoursOfOperation");
+                                String website = o.getString("website");
+                                String email = o.getString("email");
+                                String latitude = o.getString("lat");
+                                String longitude = o.getString("long");
+                                String  stayLimit = o.getString("stayLimit");
+                                String acres = o.getString("acres");
+                                String tags = o.getString("tags");
+                                String tagCount = o.getString("tagCount");
+                                String  contentImage = o.getString("contentImage");
+                                String  file = o.getString("file");
+                                String fileString = o.getString("fileString");
+                                String lastUpdated = o.getString("lastUpdated");
+                                String  origin = o.getString("origin");
+                                String approved = o.getString("approved");
+                                String status = o.getString("status");
+                                String likeCount = o.getString("likeCount");
+                                String imageUrl = o.getString("imageUrl");
+                                String reviews = o.getString("reviews");
+                                String photos = o.getString("photos");
+                                String weatherForecast = o.getString("weatherForecast");
 
 
-                                models.add(new myModel(id, name, Description, streetAddress, streetAddress2, state, city, zipcode, decription2, type, phoneNumber, hoursOfOperation, website, email, latitude, longitude, stayLimit, acres, tags, tagCount, contentImage, file, fileString, lastUpdated, origin, approved, status, likeCount, imageUrl, weatherForecast, reviews, photos));
+                                model.add(new myModel(id, name, Description, streetAddress, streetAddress2, state, city, zipcode, decription2, type, phoneNumber, hoursOfOperation, website, email, latitude, longitude, stayLimit, acres, tags, tagCount, contentImage, file, fileString, lastUpdated, origin, approved, status, likeCount, imageUrl, weatherForecast, reviews, photos));
                             }
                         }
 

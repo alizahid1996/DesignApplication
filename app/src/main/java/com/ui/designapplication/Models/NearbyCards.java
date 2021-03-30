@@ -132,7 +132,7 @@ public class NearbyCards {
                 ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                '}';
+                "}";
     }
 }
 

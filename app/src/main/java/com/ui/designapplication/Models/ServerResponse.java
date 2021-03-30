@@ -24,6 +24,6 @@ public class ServerResponse {
     public String toString() {
         return "ServerResponse{" +
                 "nearbyCards=" + nearbyCards +
-                '}';
+                "}";
     }
 }
