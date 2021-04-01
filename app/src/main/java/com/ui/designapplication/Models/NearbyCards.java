@@ -2,6 +2,8 @@ package com.ui.designapplication.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 
 public class NearbyCards {
@@ -36,7 +38,17 @@ public class NearbyCards {
     @SerializedName("imageUrl")
     private String imageUrl;
 
+    @SerializedName("tags")
+    private List<String> tags;
 
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
 
     public String getId() {
         return id;
@@ -118,21 +130,5 @@ public class NearbyCards {
         this.imageUrl = imageUrl;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "NearbyCards{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                "}";
-    }
 }
 

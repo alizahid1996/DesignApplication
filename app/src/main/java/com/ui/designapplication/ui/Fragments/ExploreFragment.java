@@ -67,16 +67,7 @@ import static android.content.ContentValues.TAG;
 
 public class ExploreFragment extends Fragment {
 
-    String id;
-    String name;
-    String Description;
-    String decription2;
-    String address;
-    String city;
-    String streetAddress2;
-    String streetAddress;
-    String state;
-    String zipcode;
+
     ProgressDialog progressDialog;
 
 
@@ -205,13 +196,8 @@ public class ExploreFragment extends Fragment {
 
     private void getServerResponse() {
 
-        /*String request = "{\n" +
-                "\"lat\":\"37.412687780\",\n" +
-                "\"long\" : \"-77.64786873015784\",\n" +
-                "\"radius\":\"20\"\n" +
-                "}";*/
         RequestModel requestModel = new RequestModel(
-                "20", currLat, currLong);
+                "20", "37.412687780", "-77.64786873015784");
 
         /*JSONObject jsonObject = new JSONObject();
             jsonObject.put("lat","37.412687780");
